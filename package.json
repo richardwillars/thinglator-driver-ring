@@ -1,0 +1,51 @@
+{
+  "name": "thinglator-driver-ring",
+  "license": "MIT",
+  "description": "Allows the Thinglator platform to talk to Ring doorbells",
+  "version": "1.0.0",
+  "maintainers": [
+    {
+      "name": "Richard Willars",
+      "email": "richard@richardwillars.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/richardwillars/thinglator-driver-ring.git"
+  },
+  "dependencies": {
+    "node-hue-api": "^2.4.2",
+    "ring-api": "^3.0.7"
+  },
+  "peerDependencies": {
+    "thinglator": "3.x"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.14.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1"
+  },
+  "scripts": {
+    "test": "jest && yarn lint",
+    "test:watch": "jest --watch",
+    "precommit": "lint-staged",
+    "lint": "eslint **/*.js"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "main": "index.js"
+}
