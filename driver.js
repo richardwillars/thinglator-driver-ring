@@ -15,19 +15,26 @@ const logActivity = (event, createEvent, events) => {
   if (event.doorbot_id) {
     deviceId = deviceIdCache[String(event.doorbot_id)];
   }
-  console.log("a");
+
   if (deviceId) {
-    console.log("b");
     if (event.state === "ringing" && event.motion === true) {
-      console.log("c");
       createEvent(events.MOTION, deviceId, {
         detected: true
       });
+      setTimeout(() => {
+        createEvent(events.MOTION, deviceId, {
+          detected: false
+        });
+      }, 5000);
     } else if (event.state === "ringing" && event.motion === false) {
-      console.log("d");
       createEvent(events.BUTTON, deviceId, {
         pressed: true
       });
+      setTimeout(() => {
+        createEvent(events.BUTTON, deviceId, {
+          pressed: false
+        });
+      }, 5000);
     }
   }
 };
